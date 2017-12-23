@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile localGroovy()
+    compile gradleApi()
+    compile 'com.android.tools.build:gradle:2.3.3'
+
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+
+apply plugin: 'maven-publish'
+
+
+publishing {
+    publications {
+        FakePlugin(MavenPublication) {
+            from components.java
+            groupId 'com.cx.fake'
+            artifactId 'plugin'
+            version '2.0'
+        }
+    }
+}
